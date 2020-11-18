@@ -1,5 +1,5 @@
 const getDB = async () =>{
-    const initalTodos = await fetch('http://localhost:3001/model/todoL')
+    const initalTodos = await fetch('model/todoL')
     const initalTodosLocal = await initalTodos.json()
     console.log(`This is the inital Todos fetch ${initalTodosLocal}`)
     console.log(initalTodosLocal)
@@ -7,20 +7,23 @@ const getDB = async () =>{
 }
 
 let postToDB = async (value) =>{
-    let pushToDatabase = await fetch(`http://localhost:3001/model/todoL?todo=${value.todo}&complete=${value.complete}&category=${value.category}&categoryID=${value.categoryID}&id=${value.id}`, {
+    // let pushToDatabase = await fetch(`http://localhost:3001/model/todoL?todo=${value.todo}&complete=${value.complete}&category=${value.category}&categoryID=${value.categoryID}&id=${value.id}`, {
+        let pushToDatabase = await fetch(`model/todoL?todo=${value.todo}&complete=${value.complete}&category=${value.category}&categoryID=${value.categoryID}&id=${value.id}`, {
         method: 'POST'
     })
 }
 
 let putToDB = async (value) =>{
-    let pushToDatabase = await fetch(`http://localhost:3001/model/todoL?todo=${value.todo}&complete=${value.complete}&category=${value.category}&categoryID=${value.categoryID}`, {
+    // let pushToDatabase = await fetch(`http://localhost:3001/model/todoL?todo=${value.todo}&complete=${value.complete}&category=${value.category}&categoryID=${value.categoryID}`, {
+        let pushToDatabase = await fetch(`model/todoL?todo=${value.todo}&complete=${value.complete}&category=${value.category}&categoryID=${value.categoryID}`, {
         method: 'PUT'
     })
 }
 
 let deleteFromDB = async (value) =>{
     console.log(`Deleting: ${value} from the database`)
-    let removeFromDatabase = await fetch(`http://localhost:3001/model/todoL/${value}`, {
+    // let removeFromDatabase = await fetch(`http://localhost:3001/model/todoL/${value}`, {
+        let removeFromDatabase = await fetch(`model/todoL/${value}`, {
         method: 'DELETE'
     })
     return removeFromDatabase
